@@ -1,28 +1,30 @@
-# پروژه ماشین ۲ — راه‌اندازی ستاره–مثلث
+# Machine 2 — Star-Delta Starting
 
-فایل‌های MATLAB و مدل‌های Simulink پروژه.
+MATLAB scripts and Simulink models for the Machine 2 star-delta starting project.
 
-| فایل | توضیح |
+## Files
+
+| File | Description |
 | --- | --- |
-| `stardelta.slx` | مدل ستاره–مثلث موجود در پوشه پروژه |
-| `new_fixed.slx` | نسخه اصلاح‌شده مدل |
-| `new_fixed_latched.slx` | نسخه دارای Relay برای فرمان‌های ستاره و مثلث |
-| `فایل شبیه سازی.slx` | مدل شبیه‌سازی ذخیره‌شده پروژه |
-| `fix_new_model.m` | اصلاح فرمان ستاره، افزودن Memory و تأخیر ۳۰ میلی‌ثانیه‌ای فرمان مثلث |
-| `latch_new_model.m` | جایگزینی مقایسه‌گرها با Relay در مدل اصلاح‌شده |
+| `stardelta.slx` | Star-delta model from the project folder. |
+| `new_fixed.slx` | Corrected version of the model. |
+| `new_fixed_latched.slx` | Version with Relay blocks for the star and delta commands. |
+| `فایل شبیه سازی.slx` | Saved project simulation model. |
+| `fix_new_model.m` | Corrects the star command, adds Memory blocks, and adds a 30 ms delay to the delta command. |
+| `latch_new_model.m` | Replaces the comparators with Relay blocks in the corrected model. |
 
-## باز کردن مدل‌ها
+## Opening the models
 
-در MATLAB پوشه جاری را به این پوشه تغییر دهید و مدل موردنظر را باز کنید، مثلاً:
+Set the MATLAB current folder to this directory, then open the desired model. For example:
 
 ```matlab
 open_system('new_fixed_latched.slx');
 ```
 
-مدل‌ها به MATLAB، Simulink و ابزارهای Simscape / Simscape Electrical متناسب با بلوک‌های مدل نیاز دارند. سازگاری نسخه و اجرای شبیه‌سازی در این بارگذاری بررسی نشده است.
+The models require MATLAB, Simulink, and the Simscape / Simscape Electrical products used by their blocks. Version compatibility and simulation execution were not verified during this upload.
 
-## اسکریپت‌های اصلاح مدل
+## Model modification scripts
 
-اسکریپت‌ها با محتوای اصلی نگهداری شده‌اند. پیش از اجرا، مسیرهای `src` و `dst` در ابتدای آن‌ها را برای رایانه خود تنظیم کنید.
+The scripts retain their original contents. Before running them, update the `src` and `dst` paths at the beginning of each script for your computer.
 
-ترتیب اصلاح‌ها: ابتدا `fix_new_model.m` و سپس `latch_new_model.m` است. اسکریپت اول به فایل ورودی `new.slx` نیاز دارد که نسخه ذخیره‌شده آن در فایل‌های پیدا‌شده موجود نبود؛ مدل‌های خروجی `new_fixed.slx` و `new_fixed_latched.slx` موجود و در این پوشه قرار دارند. فایل‌های autosave و فایل‌های نامرتبط بارگذاری نشده‌اند.
+Run `fix_new_model.m` first, followed by `latch_new_model.m`. The first script requires `new.slx`, whose saved version was not found among the available files. The output models, `new_fixed.slx` and `new_fixed_latched.slx`, are included in this directory. Autosave files and unrelated files are not included.
